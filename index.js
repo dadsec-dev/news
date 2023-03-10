@@ -30,7 +30,7 @@ app.get("/api/getList", (req, res) => {
       console.log(textContent); /* No Problem Mate */
       browser.close();
       fs.writeFileSync("data.json", JSON.stringify(textContent));
-      res.send(textContent);
+      res.send({ textContent });
       return textContent;
     } catch (error) {
       console.log(error);
