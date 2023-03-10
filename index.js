@@ -10,7 +10,7 @@ app.use(cors());
 app.use(express.static(path.join(__dirname, "client/build")));
 
 // An api endpoint that returns a short list of items
-app.get("/api/getList", (req, res) => {
+app.get("/", (req, res) => {
   const Ratess = async () => {
     try {
       const browser = await puppeteer.launch();
@@ -30,7 +30,7 @@ app.get("/api/getList", (req, res) => {
       console.log(textContent); /* No Problem Mate */
       browser.close();
       fs.writeFileSync("data.json", JSON.stringify(textContent));
-      res.send({ textContent });
+      res.send(textContent);
       return textContent;
     } catch (error) {
       console.log(error);
